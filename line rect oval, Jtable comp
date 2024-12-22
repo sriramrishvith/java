@@ -1,0 +1,124 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+class shape extends JFrame implements ActionListener
+{
+    JButton line,rect,oval;
+    JPanel p;
+    int startX,startY,endX,endY;
+    String shape;
+    shape()
+    {
+        setTitle("Shapes");
+        setBounds(280,50,400,300);
+        setLayout(new BorderLayout());
+        setVisible(true);
+        JPanel bp=new JPanel();
+        line=new JButton("Line");
+        line.addActionListener(this);
+        bp.add(line);
+        rect=new JButton("Rectangle");
+        rect.addActionListener(this);
+        bp.add(rect);
+        oval=new JButton("Oval");
+        oval.addActionListener(this);
+        bp.add(oval);
+        add(bp,BorderLayout.NORTH);
+        p=new JPanel()
+        {
+            protected void paintComponent(Graphics g)
+            {
+                super.paintComponent(g);
+                switch (shape)
+                {
+                    case "line":g.setColor(Color.black);
+                                g.drawLine(startX, startY, endX, endY);
+                                break;
+                    case "rectangle":g.setColor(Color.blue);
+                                     int width = Math.abs(endX - startX);
+                                     int height = Math.abs(endY - startY);
+                                     g.drawRect(Math.min(startX, endX), Math.min(startY, endY), width, height);
+                                     break;
+                    case "oval":g.setColor(Color.green);
+                                width = Math.abs(endX - startX);
+                                height = Math.abs(endY - startY);
+                                g.drawOval(Math.min(startX, endX), Math.min(startY, endY), width, height);
+                                break;
+                }
+            }
+        };
+        add(p,BorderLayout.CENTER);
+        p.addMouseListener(new MouseAdapter()
+        {
+            public void mousePressed(MouseEvent e)
+            {
+                startX=e.getX();
+                startY=e.getY();
+                endX=startX;
+                endY=startY;
+            }
+            public void mouseReleased(MouseEvent e)
+            {
+                endX=e.getX();
+                endY=e.getY();
+                repaint();
+            }
+        });
+        p.addMouseMotionListener(new MouseMotionAdapter()
+        {
+            public void mouseDragged(MouseEvent e)
+            {
+                endX=e.getX();
+                endY=e.getY();
+                repaint();
+            }
+        });
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+        if(ae.getSource()==line)
+        shape="line";
+        else if(ae.getSource()==rect)
+        shape="rectangle";
+        else if(ae.getSource()==oval)
+        shape="oval";
+    }
+    public static void main(String[] args)
+    {
+        new shape();
+    }
+}
+
+
+
+
+import java.io.*;
+import java.awt.*;
+import javax.swing.*;
+class table extends JFrame
+{
+    table(String v[][],String h[])
+    {
+        setTitle("Table");
+        setBounds(280,50,400,300);
+        setLayout(new BorderLayout());
+        setVisible(true);
+        JTable table=new JTable(v,h);
+        getContentPane().add(table);
+    }
+    public static void main(String[] args) throws Exception
+    {
+        FileReader f=new FileReader("Table.txt");
+        BufferedReader br=new BufferedReader(f);
+        String head[]=br.readLine().split(",");
+        String values[][]=new String[5][4];
+        String line=br.readLine();
+        int i=0;
+        while(line!=null)
+        {
+            values[i++]=line.split(",");
+            line=br.readLine();
+        }
+        new table(values,head);
+    }
+}
