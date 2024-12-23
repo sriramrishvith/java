@@ -1,0 +1,85 @@
+import java.util.*;
+class ParamConstructor
+{
+    int id;
+    String name;
+    ParamConstructor()
+    {
+        id=125;
+        name="Sindhu";
+    }
+    ParamConstructor(int a,String b)
+    {
+        id=a;
+        name=b;
+    }
+    void showdetails1()
+    {
+        System.out.println("The Default value of the student is:");
+        System.out.println("Sid: "+id);
+        System.out.println("Sname: "+name);
+    }
+    void showdetails2()
+    {
+        System.out.println("Sid: "+id);
+        System.out.println("Name of the Student is:");
+        String[] arr=name.split(" ");
+        for (int i=0;i<arr.length;i++)
+        {
+            if(i==0)
+            {
+                System.out.println("firstname: "+arr[i]);
+            }
+            if(i==1)
+            {
+                System.out.println("middlename: "+arr[i]);
+            }
+            if(i==2)
+            {
+                System.out.println("lastname: "+arr[i]);
+            }
+        }
+    }
+    public static void main(String[] args)
+    {
+        ParamConstructor obj=new ParamConstructor();
+        obj.showdetails1();
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        sc.nextLine();
+        String b=sc.nextLine();
+        ParamConstructor obj1=new ParamConstructor(a,b);
+        obj1.showdetails2();
+    }
+}
+
+
+
+import java.util.*;
+class token
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.nextLine();
+        StringTokenizer st = new StringTokenizer(s);
+        int count = st.countTokens();
+        System.out.println("Total number of tokens:"+count);
+        int sum=0;
+        for(int i=0;i<count;i++)
+        {
+            try
+            {
+                String x=st.nextToken();
+                int number=Integer.parseInt(x);
+                System.out.print(x+" ");
+                sum+=number;
+            }catch(Exception e)
+            {
+                System.out.println("\nnon integer is encountered. terminated.");
+                System.exit(0);
+            }
+        }
+        System.out.println("\nSum of tokens :"+sum);
+    }
+}
