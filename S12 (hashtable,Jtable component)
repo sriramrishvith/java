@@ -1,0 +1,59 @@
+import java.util.*;
+class HashTableDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        sc.nextLine();
+        Hashtable<String,String> h=new Hashtable<String,String>();
+        String a,b,k;
+        for(int i=0;i<n;i++)
+        {
+            a=sc.nextLine();
+            b=sc.nextLine();
+            h.put(a,b);
+        }
+        System.out.println("Hashtable contents:");
+        Iterator<String> z=h.keySet().iterator();
+        for(int i=0;i<h.size();i++)
+        {
+            k=z.next();
+            System.out.print("Key: "+k+" Value: "+h.get(k));
+            System.out.println();
+        }
+    }
+}
+
+
+
+import java.io.*;
+import java.awt.*;
+import javax.swing.*;
+class table extends JFrame
+{
+    table(String v[][],String h[])
+    {
+        setTitle("Table");
+        setBounds(280,50,400,300);
+        setLayout(new BorderLayout());
+        setVisible(true);
+        JTable table=new JTable(v,h);
+        getContentPane().add(table);
+    }
+    public static void main(String[] args) throws Exception
+    {
+        FileReader f=new FileReader("Table.txt");
+        BufferedReader br=new BufferedReader(f);
+        String head[]=br.readLine().split(",");
+        String values[][]=new String[5][4];
+        String line=br.readLine();
+        int i=0;
+        while(line!=null)
+        {
+            values[i++]=line.split(",");
+            line=br.readLine();
+        }
+        new table(values,head);
+    }
+}
