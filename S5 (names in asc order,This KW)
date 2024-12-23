@@ -1,0 +1,58 @@
+import java.util.*;
+class sort
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int n = sc.nextInt();
+        String str[] = new String[n];
+        sc.nextLine();
+        for(int i=0;i<n;i++)
+        {
+            str[i]=sc.nextLine();
+        }
+        Arrays.sort(str);
+        System.out.print("Names in Sorted Order:");
+        for(int i=0;i<n;i++)
+        {
+            if(i==n-1)
+            System.out.print(str[i]);
+            else
+            System.out.print(str[i]+",");
+        }
+       
+    }
+}
+
+
+
+import java.util.*;
+class this_keyword
+{
+    int a;
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int c=sc.nextInt();
+        int d=sc.nextInt();
+        System.out.println("Value of Instance variable in main  :"+d);
+        System.out.println("Value of Local variable in main  :"+c);
+        m1(c,d);
+        this_keyword k=new this_keyword();
+        k.m2();
+    }
+    static void m1(int c,int a)
+    {
+        c=100;
+        a=90;
+        System.out.println("Value of Instance variable :"+c);
+        System.out.println("Value of Local variable :"+a);
+    }
+    void m2()
+    {
+        int l=40;
+        this.a=100;
+        System.out.println("Value of Instance variable :"+a);
+        System.out.print("Value of Local variable z:"+l);
+    }
+}
