@@ -1,0 +1,44 @@
+import java.util.*;
+import java.io.*;
+class WordCount
+{
+    public static void main(String[] args) throws Exception
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        FileInputStream in=new FileInputStream(s);
+        int c=0,w=1,l=1;
+        int n=in.read();
+        while(n!=-1)
+        {
+            c++;
+            if((char)n==' ' || (char)n=='\n')
+            w++;
+            if((char)n=='\n')
+            l++;
+            n=in.read();
+        }
+        System.out.println("The number of characters is "+c);
+        System.out.println("The number of words is "+w);
+        System.out.println("The number of lines is "+l);
+    }
+}
+
+
+
+import java.util.*;
+class VectorDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        sc.nextLine();
+        Vector<String> v=new Vector<String>();
+        for(int i=0;i<n;i++)
+        v.addElement(sc.nextLine());
+        System.out.println("Elements are:");
+        for(String i:v)
+        System.out.print(i+" ");
+    }
+}
