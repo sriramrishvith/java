@@ -1,0 +1,93 @@
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+class calculator extends JFrame implements ActionListener
+{
+    JTextField a,b,o,ans;
+    calculator()
+    {
+        setTitle("Simple Calculator");
+        setBounds(280,50,500,250);
+        setLayout(null);
+        setVisible(true);
+        a=new JTextField();
+        a.setBounds(30,70,100,30);
+        add(a);
+        o=new JTextField();
+        o.setBounds(160,70,30,30);
+        o.setHorizontalAlignment(JTextField.CENTER);
+        add(o);
+        b=new JTextField();
+        b.setBounds(220,70,100,30);
+        add(b);
+        JLabel l=new JLabel("=");
+        l.setBounds(330,70,20,30);
+        add(l);
+        ans=new JTextField();
+        ans.setBounds(360,70,110,30);
+        ans.setEditable(false);
+        add(ans);
+        JButton x=new JButton("Compute");
+        x.setBounds(200,150,100,40);
+        x.addActionListener(this);
+        add(x);
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            int y=Integer.parseInt(a.getText());
+            int z=Integer.parseInt(b.getText());
+            int output=0;
+            switch(o.getText())
+            {
+                case "+":output=y+z;
+                         break;
+                case "-":output=y-z;
+                         break;
+                case "*":output=y*z;
+                         break;
+                case "/":output=y/z;
+                         break;
+                case "%":output=y%z;
+                         break;
+                default:JOptionPane.showMessageDialog(null,"Invalid Operator");
+            }
+            ans.setText(String.valueOf(output));
+        }
+        catch(Exception e)
+        {
+            System.out.println();
+        }
+    }
+    public static void main(String[] args)
+    {
+        new calculator();
+    }
+}
+
+
+
+import java.util.*;
+class staticCounter
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        A.count=sc.nextInt();
+        A.i=1;
+        A a1=new A();
+        A a2=new A();
+        A a3=new A();
+        A a4=new A();
+    }
+}
+class A
+{
+    static int count;
+    static int i;
+    A()
+    {
+        System.out.println("c"+ i++ +" count"+ "="+ ++count);
+    }
+}
