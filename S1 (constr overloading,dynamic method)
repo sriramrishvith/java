@@ -1,0 +1,96 @@
+import java.util.*;
+class ConstructorOverloading
+{
+    int i;
+    int j;
+    ConstructorOverloading()
+    {
+        i=100;
+        j=200;
+        System.out.println("Inside default constructor");
+        System.out.println("Value of i: "+i+" and j: "+j);
+    }
+    ConstructorOverloading(int a)
+    {
+        System.out.println("Inside single parameter constructor with int value"+" = "+a);
+    }
+    ConstructorOverloading(String b)
+    {
+        System.out.println("Inside single parameter constructor with String object");
+        System.out.println("String Value"+" = "+b);
+    }
+    ConstructorOverloading(int a,double c)
+    {
+        System.out.println("Inside double parameter constructor value of p"+" = "+a+" and k"+" = "+c);
+    }
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int a=sc.nextInt();
+        sc.nextLine();
+        String b=sc.nextLine();
+        double c=sc.nextDouble();
+        ConstructorOverloading obj=new ConstructorOverloading();
+        ConstructorOverloading obj1=new ConstructorOverloading(a);
+        ConstructorOverloading obj2=new ConstructorOverloading(b);
+        ConstructorOverloading obj3=new ConstructorOverloading(a,c);
+    }
+}
+
+
+
+import java.util.*;
+class A
+{
+    int x;
+    A(int x)
+    {
+        this.x=x;
+    }
+    void callme()
+    {
+        System.out.println("Number in A: "+x);
+    }
+}
+class B extends A
+{
+    B(int y)
+    {
+        super(y+100);
+    }
+    void callme()
+    {
+        System.out.println("Number in B: "+x);
+    }
+}
+class C extends A
+{
+    C(int z)
+    {
+        super(z+200);
+    }  
+    void callme()
+    {
+        System.out.println("Number in C: "+x);
+    }
+}
+class DynamicMethod
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        A a1;
+        int x=sc.nextInt();
+        int y=sc.nextInt();
+        int z=sc.nextInt();
+        A a2=new A(x);
+        a1=a2;
+        a1.callme();
+        B b1=new B(y);
+        a1=b1;
+        a1.callme();
+        C c1=new C(z);
+        a1=c1;
+        a1.callme();
+    }
+}
