@@ -1,0 +1,75 @@
+import java.util.*;
+class FinalKeyword
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        final int n=sc.nextInt();
+        System.out.println(n);
+    }
+}
+
+
+
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+class integerDivision extends JFrame implements ActionListener
+{
+    JTextField dividend,divisor,answer;
+    JLabel a,b,c;
+    JButton divide;
+    integerDivision()
+    {
+        setTitle("Division");
+        setBounds(280,50,400,300);
+        setLayout(null);
+        setVisible(true);
+        a=new JLabel("Enter Num1:");
+        a.setBounds(50,40,100,40);
+        add(a);
+        b=new JLabel("Enter Num2:");
+        b.setBounds(50,90,100,40);
+        add(b);
+        c=new JLabel("Result:");
+        c.setBounds(100,200,100,40);
+        add(c);
+        divide=new JButton("Divide");
+        divide.setBounds(145,145,100,40);
+        divide.addActionListener(this);
+        add(divide);
+        dividend=new JTextField();
+        dividend.setBounds(180,45,100,30);
+        add(dividend);
+        divisor=new JTextField();
+        divisor.setBounds(180,95,100,30);
+        add(divisor);
+        answer=new JTextField();
+        answer.setBounds(180,205,100,30);
+        answer.setEditable(false);
+        add(answer);
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            int x=Integer.parseInt(dividend.getText());
+            int y=Integer.parseInt(divisor.getText());
+            int z=x/y;
+            answer.setText(String.valueOf(z));
+        }
+        catch(NumberFormatException e)
+        {
+            JOptionPane.showMessageDialog(null,"Please enter valid integers");
+        }
+        catch(ArithmeticException e)
+        {
+            JOptionPane.showMessageDialog(null,"Divison by zero is not possible");
+        }
+    }
+    public static void main(String[] args)
+    {
+        new integerDivision();
+    }
+}
