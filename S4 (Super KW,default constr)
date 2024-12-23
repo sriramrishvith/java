@@ -1,0 +1,56 @@
+import java.util.*;
+class supe
+{
+    int a;
+}
+class vijay extends supe
+{
+    int b;
+    vijay(int x,int y)
+    {
+        super.a=x;
+        b=y;
+    }
+    void m1()
+    {
+        System.out.println("Accessing Parentclass variable using super keyword: "+a);
+        System.out.println("Accessing subclass variable : "+b);
+    }
+}
+class superExample
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        int a=sc.nextInt();
+        int b=sc.nextInt();
+        vijay c4=new vijay(a,b);
+        c4.m1();
+    }
+}
+
+
+
+class DefaultConstructor
+{
+    int id;
+    String name;
+    String city;
+    DefaultConstructor()
+    {
+        id=846;
+        name="GRIET";
+        city="Hyderabad";
+    }
+    void showdetails()
+    {
+        System.out.println("College ID:"+id);
+        System.out.println("College Name:"+name);
+        System.out.println("City:"+city);
+    }
+    public static void main(String[] args)
+    {
+        DefaultConstructor obj=new DefaultConstructor();
+        obj.showdetails();
+    }
+}
