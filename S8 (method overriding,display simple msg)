@@ -1,0 +1,103 @@
+import java.util.*;
+import java.io.*;
+class Bank
+{
+    int roi()
+    {
+        return(0);
+    }
+}
+class SBI extends Bank
+{
+     int roi()
+    {
+        return(8);
+    }
+}
+class ICICI extends Bank
+{
+     int roi()
+    {
+        return(7);
+    }
+}
+class AXIS extends Bank
+{
+     int roi()
+    {
+        return(9);
+    }
+}
+class MethodOverriding
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        //MethodOverriding m1=new MethodOverriding();
+        SBI s1=new SBI();
+        ICICI i1=new ICICI();
+        AXIS a1=new AXIS();
+        Bank b1;
+        if(n==1)
+        {
+            b1=s1;
+            System.out.println("SBI rate of interest ="+b1.roi()+"%");
+        }
+        else if(n==2)
+        {
+            b1=i1;
+            System.out.println("ICICI rate of interest ="+b1.roi()+"%");
+        }
+        else if(n==3)
+        {
+            b1=a1;
+            System.out.println("AXIS rate of interest ="+b1.roi()+"%");
+        }
+        else
+        {
+            System.out.println("Invalid Input");
+        }
+    }
+}
+
+
+
+
+import javax.swing.*;
+import java.awt.event.*;
+import java.awt.*;
+class swingExample extends JFrame implements ActionListener
+{
+    swingExample()
+    {
+        setTitle("Button Example");
+        getContentPane().setBackground(Color.WHITE);
+        setLayout(null);
+        setBounds(400,70,300,300);
+        setVisible(true);
+        JButton c=new JButton("Click Here");
+        c.setBounds(75,75,150,30);
+        c.addActionListener(this);
+        add(c);
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            JTextField s=new JTextField("Welcome to griet.");
+            s.setBounds(75,120,150,30);
+            s.setHorizontalAlignment(JTextField.CENTER);
+            s.setEditable(false);
+            add(s);
+        }
+        catch(Exception e)
+        {
+            System.out.println();
+        }
+    }
+    public static void main(String[] args)
+    {
+        new swingExample();
+    }
+}
