@@ -1,0 +1,75 @@
+import java.util.*;
+class uncheckedException
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int n=sc.nextInt();
+        try
+        {
+            if(n<1)
+            throw new IllegalArgumentException();
+            int arr[]=new int[n];
+            for(int i=0;i<n;i++)
+            arr[i]=sc.nextInt();
+            int x=sc.nextInt();
+            System.out.println("Element at index "+x+": "+arr[x]);
+        }
+        catch(IllegalArgumentException i)
+        {
+            System.out.println("Array size cannot be negative.");
+        }
+        catch(ArrayIndexOutOfBoundsException e)
+        {
+            System.out.println("The specified index does not exist");
+        }
+    }
+}
+
+
+
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.*;
+class factorialSwing extends JFrame implements ActionListener
+{
+    JTextField n,fact;
+    factorialSwing()
+    {
+        getContentPane().setBackground(Color.WHITE);
+        setTitle("Factorial");
+        setBounds(350,70,300,200);
+        setLayout(null);
+        setVisible(true);
+        n=new JTextField();
+        n.setBounds(50,50,90,30);
+        add(n);
+        fact=new JTextField();
+        fact.setBounds(160,50,90,30);
+        fact.setEditable(false);
+        add(fact);
+        JButton b=new JButton("Compute");
+        b.setBounds(100,100,100,40);
+        b.addActionListener(this);
+        add(b);
+    }
+    public void actionPerformed(ActionEvent ae)
+    {
+        try
+        {
+            int a=Integer.parseInt(n.getText());
+            int fac=1;
+            for(int i=1;i<=a;i++)
+            fac*=i;
+            fact.setText(String.valueOf(fac));
+        }
+        catch(Exception e)
+        {
+            System.out.println();
+        }
+    }
+    public static void main(String[] args)
+    {
+        new factorialSwing();
+    }
+}
