@@ -1,0 +1,81 @@
+import java.util.*;
+class MethodOverloading
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        char a=sc.next().charAt(0);
+        int b=sc.nextInt();
+        double c=sc.nextDouble();
+        display(a);
+        display(a,b);
+        display(b,c);
+    }
+    static void display(char a)
+    {
+        System.out.println("Value of character"+" = "+a);
+    }
+    static void display(char a,int b)
+    {
+        System.out.println("Value of character"+" = "+a);
+        System.out.println("Value of Integer number"+" = "+b);
+    }
+    static void display(int b,double c)
+    {
+        System.out.println("Value of Integer number"+" = "+b);
+        System.out.println("Value of Floating number"+" = "+c);
+    }
+}
+
+
+
+import java.util.*;
+interface i1
+{
+    abstract float percal();
+    abstract void disp();
+}
+class student
+{
+    int rno,m1,m2;
+    String name;
+    student(int r,int i,int j,String s)
+    {
+        rno=r;
+        m1=i;
+        m2=j;
+        name=s;
+    }
+}
+class third extends student implements i1
+{
+    third(int r,int i,int j,String s)
+    {
+        super(r,i,j,s);
+    }
+    public float percal()
+    {
+        return (((float)(m1+m2)/200)*100);
+    }
+    public void disp()
+    {
+        System.out.println("Name of Student: "+name);
+        System.out.println("Roll No. of Student: "+rno);
+        System.out.println("Marks of Subject 1: "+m1);
+        System.out.println("Marks of Subject 2: "+m2);
+        System.out.println("Percentage: "+(percal())+"%");
+    }
+}
+class MultipleInheritance
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        int r=sc.nextInt();
+        int i=sc.nextInt();
+        int j=sc.nextInt();
+        i1 k=(i1) new third(r,i,j,s);
+        k.disp();
+    }
+}
