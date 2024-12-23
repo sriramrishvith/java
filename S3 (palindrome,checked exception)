@@ -1,0 +1,47 @@
+import java.util.*;
+class palindrome
+{
+    public static void main(String[] args)
+    {
+        Scanner sc = new Scanner(System.in);
+        String s=sc.nextLine();
+        String s1="";
+        for (int i=s.length()-1;i>=0;i--)
+        {
+            s1+=s.charAt(i);
+        }
+        if(s.equals(s1))
+        System.out.println("string "+s+" is palindrome");
+        else
+        System.out.println("string "+s+" is not palindrome");
+    }
+}
+
+
+
+
+import java.util.*;
+import java.io.*;
+class checkedException
+{
+    public static void main(String[] args) throws Exception
+    {
+        Scanner sc=new Scanner(System.in);
+        String s=sc.nextLine();
+        try
+        {
+            FileInputStream in=new FileInputStream(s);
+            int n=in.read();
+            while(n!=-1)
+            {
+                System.out.print((char)n);
+                n=in.read();
+            }
+            in.close();
+        }
+        catch(Exception e)
+        {
+            System.out.println("Error reading file");
+        }
+    }
+}
