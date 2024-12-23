@@ -1,0 +1,145 @@
+import java.util.*;
+class Buffer
+{
+    int capacity;
+    int count=0;
+    Buffer(int c)
+    {
+        capacity=c;
+    }
+    public synchronized void produce(int v) throws InterruptedException
+    {
+        while(count==capacity)
+        {
+            wait();
+        }
+        System.out.println("Produced "+v);
+        count++;
+        notify();
+    }
+    public synchronized void consume(int v) throws InterruptedException
+    {
+        while(count==0)
+        {
+            wait();
+        }
+        System.out.println("Consumed "+v);
+        count--;
+        notify();
+    }
+}
+class Producer extends Thread
+{
+    public Buffer buffer;
+    Producer(Buffer b)
+    {
+        buffer=b;
+    }
+    public void run()
+    {
+        int v=0;
+        while(true)
+        {
+            try
+            {
+                buffer.produce(v++);
+                sleep(500);
+            }
+            catch(InterruptedException e)
+            {
+                currentThread().interrupt();
+            }
+        }
+    }
+}
+class Consumer extends Thread
+{
+    public Buffer buffer;
+    Consumer(Buffer b)
+    {
+        buffer=b;
+    }
+    public void run()
+    {
+        int v=0;
+        while(true)
+        {
+            try
+            {
+                buffer.consume(v++);
+                sleep(1000);
+            }
+            catch(InterruptedException e)
+            {
+                currentThread().interrupt();
+            }
+        }
+    }
+}
+class ProducerConsumer
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        int capacity=sc.nextInt();
+        Buffer buffer=new Buffer(capacity);
+        Producer p=new Producer(buffer);
+        Consumer c=new Consumer(buffer);
+        p.start();
+        c.start();
+    }
+}
+
+
+
+import java.util.*;
+class StackDemo
+{
+    public static void main(String[] args)
+    {
+        Scanner sc=new Scanner(System.in);
+        Stack<String> s=new Stack<String>();
+        while(true)
+        {
+            switch(sc.nextInt())
+            {
+                case 1:sc.nextLine();
+                       s.push(sc.nextLine());
+                       break;
+                case 2:if(s.isEmpty())
+                       {
+                           System.out.println("Stack is empty. Nothing to pop.");
+                           break;
+                       }
+                       s.pop();
+                       break;
+                case 3:if(s.isEmpty())
+                       {
+                           System.out.println("Stack is empty. Nothing to peek.");
+                           break;
+                       }
+                       System.out.println("Top element of the stack is \""+s.peek()+"\".");
+                       break;
+                case 4:if(s.isEmpty())
+                       {
+                            System.out.println("The stack is empty.");
+                            break;
+                       }
+                       System.out.println("The stack is not empty.");
+                       break;
+                case 5:if(s.isEmpty())
+                       {
+                            System.out.println("Stack is empty. No elements to display.");
+                            break;
+                       }
+                       System.out.println("Elements in the stack:");
+                       for(int i=0;i<s.size();i++)
+                       System.out.println(s.get(i));
+                       break;
+                case 6:System.out.println("Exiting program.");
+                       System.exit(0);
+            }
+        }
+    }
+}
+
