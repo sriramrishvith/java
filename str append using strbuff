@@ -1,0 +1,11 @@
+public class Main
+{
+	public static void main(String[] args) {
+		
+    
+        StringBuffer sb1 = new StringBuffer("HELLO WORLD"+" ");
+        System.out.println(sb1);
+        sb1.append("hello world");
+        System.out.println(sb1);
+	}
+}
