@@ -1,0 +1,20 @@
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static void main(String[] args) {
+		Set<String> hash_Set = new HashSet<String>();
+
+        // Adding elements to the Set
+        // using add() method
+        hash_Set.add("Apple");
+        hash_Set.add("Boy");
+        hash_Set.add("Car");
+        hash_Set.add("Apple");
+        hash_Set.add("Dog");
+        for(String i:hash_Set)
+        {
+            System.out.println(i);
+        }
+	}
+}
