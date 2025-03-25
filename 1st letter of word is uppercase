@@ -1,0 +1,17 @@
+import java.util.*;
+import java.io.*;
+public class Main
+{
+	public static void main(String[] args) {
+		String str = "hello hi everyone";
+        String[] arr = str.split(" ");
+        String res = "";
+        for (int j = 0; j < arr.length; j++) {
+            for (char c : arr[j].toCharArray()) {
+                res += Character.toUpperCase(arr[j].charAt(0)) + arr[j].substring(1) + " ";
+                break;
+            }
+        }
+        System.out.println(res);
+	}
+}
