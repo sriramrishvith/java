@@ -1,0 +1,21 @@
+import java.io.*;
+public class Main {
+    public static void exc(int n) throws Exception {
+        if(n<0)
+        {
+            throw new Exception("negative");
+        }
+        else
+        {
+            System.out.println("positive");
+        }
+    }
+    public static void main(String[] args)
+    {
+        try {
+            exc(-75);
+        } catch(Exception e) {
+            System.out.println("Exception occured "+e);
+        }
+    }
+}
